@@ -1,0 +1,25 @@
+﻿@using DanismaSira.Models.ViewModels
+@model DepartmentVM
+@{
+    ViewData["Title"] = "Birim Oluştur";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Birim Ekle</h2>
+
+    <form asp-action="CreateDepartment" asp-controller="Department" method="post">
+        <div class="mb-3">
+            <label asp-for="DepartmentId" class="form-label">Birim Adı:</label>
+            <input asp-for="DepartmentId" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="departmentDescription" class="form-label">Birim Açıklaması:</label>
+            <input asp-for="departmentDescription" class="form-control" />
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Oluştur</button>
+        </div>
+    </form>
+</div>

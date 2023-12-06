@@ -1,0 +1,55 @@
+﻿@using DanismaSira.Models.ViewModels
+@model RegistrationVM
+@{
+    ViewData["Title"] = "Kayıt Oluştur";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Kayıt Ekle</h2>
+
+    <form asp-action="CreateRegistration" asp-controller="Registration" method="post">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label asp-for="User.Name" class="form-label">Adı:</label>
+                <input asp-for="User.Name" class="form-control" />
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label asp-for="User.Surname" class="form-label">Soyadı:</label>
+                <input asp-for="User.Surname" class="form-control" />
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="User.TcOrItuNumber" class="form-label">TC/İTÜ Numarası:</label>
+            <input asp-for="User.TcOrItuNumber" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Üyelik Durumu:</label>
+            <div class="form-check">
+                <input class="form-check-input" asp-for="User.IsItuMember" type="radio" value="True" id="ituMemberTrue">
+                <label class="form-check-label" asp-for="User.IsItuMember">İTÜ Mensubuyum</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" asp-for="User.IsItuMember" type="radio" value="False" id="ituMemberFalse">
+                <label class="form-check-label" asp-for="User.IsItuMember">İTÜ Mensubu Değilim</label>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Bölüm:</label>
+            @foreach (var department in Model.Departments)
+            {
+                <div class="form-check">
+                    <input class="form-check-input" asp-for="DepartmentId" type="radio" value="@department.departmentId">
+                    <label class="form-check-label" asp-for="DepartmentId">@department.departmentName</label>
+                </div>
+            }
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Oluştur</button>
+        </div>
+    </form>
+</div>

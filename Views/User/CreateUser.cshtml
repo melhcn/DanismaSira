@@ -1,0 +1,42 @@
+﻿@using DanismaSira.Models.ViewModels
+@model UserVM
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Kullanıcı Ekle</h2>
+
+    <form asp-action="CreateUser" asp-controller="User" method="post">
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">Adı:</label>
+            <input asp-for="Name" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Surname" class="form-label">Soyadı:</label>
+            <input asp-for="Surname" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="TcOrItuNumber" class="form-label">TC/İTÜ Numarası:</label>
+            <input asp-for="TcOrItuNumber" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Üyelik Durumu:</label>
+            <div class="form-check">
+                <input class="form-check-input" asp-for="IsItuMember" type="radio" value="1" id="ituMemberTrue">
+                <label class="form-check-label" asp-for="IsItuMember">İTÜ Mensubuyum</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" asp-for="IsItuMember" type="radio" value="0" id="ituMemberFalse">
+                <label class="form-check-label" asp-for="IsItuMember">İTÜ Mensubu Değilim</label>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Oluştur</button>
+        </div>
+    </form>
+</div>

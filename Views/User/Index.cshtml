@@ -1,0 +1,46 @@
+﻿@using DanismaSira.Models.ViewModels;
+@model UserListVM;
+@{
+    ViewData["Title"] = "Index";
+
+}
+
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-primary">Kişi Listesi</h2>
+    </div>
+    <div class="col-6 text-right">
+        <a class="btn btn-primary" asp-action="CreateUser"><i class="fas fa-plus"></i> &nbsp; Yeni Kişi Oluştur</a>
+    </div>
+</div>
+<div class="card mb-4 mt-2">
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>İsim</th>
+                        <th>Soyisim</th>
+                        <th>TC/İtü Sicil Numarası</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var User in Model.Users)
+                    {
+                        <tr>
+                            <td>@User.Name</td>
+                            <td>@User.Surname</td>
+                            <td>@User.TcOrItuNumber</td>
+                            <td>
+                                <a class="btn btn-sm btn-danger" asp-controller="User" asp-action="DeleteUser" asp-route-id="@User.UserId" onclick="return confirm('Bu kişiyi silmek istediğinize emin misiniz?')">Sil</a>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
